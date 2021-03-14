@@ -9,7 +9,7 @@ namespace AddressBook_PS2.Models
     public class Address
     {
         [Display(Name = "Ulica")]
-        [StringLength(60, MinimumLength = 3), Required(ErrorMessage ="Polejest obowiązkowe")]
+        [StringLength(60, MinimumLength = 3), Required(ErrorMessage ="Pole jest obowiązkowe")]
         public string Street { get; set; }
         [Display(Name = "Kod pocztowy")]
         public string ZipCode { get; set; }
