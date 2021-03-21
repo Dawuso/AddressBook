@@ -6,6 +6,8 @@ using AddressBook_PS2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace AddressBook_PS2.Pages
 {
@@ -30,11 +32,12 @@ namespace AddressBook_PS2.Pages
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return Page();
+                HttpContext.Session.SetString("SessionAddress", JsonConvert.SerializeObject(Address));
+                return RedirectToPage("./Address");
             }
-            return RedirectToPage("./Privacy");
+            return Page();
         }
     }
 }
